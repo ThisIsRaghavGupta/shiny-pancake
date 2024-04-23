@@ -5829,5 +5829,5 @@ S5 = oo([V({
 const so = S5;
 new S({
   render: (t) => t(so)
-}).$mount("#app");
+}).$mount("#app2");
 //# sourceMappingURL=overlay.js.map
