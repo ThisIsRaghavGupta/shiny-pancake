@@ -8982,14 +8982,15 @@ pe = g7([l1({
 })], pe);
 const sd = pe;
 window.ContentLayout = pe;
-const bd = (e, t) => new $({
+const ad = (e, t) => new $({
   render: (n) => n(sd, {
     props: {
       url: t
     }
   })
 }).$mount(e);
+window.Overlay = ad;
 export {
-  bd as Overlay
+  ad as Overlay
 };
 //# sourceMappingURL=overlay.js.map
