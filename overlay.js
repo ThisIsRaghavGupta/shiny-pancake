@@ -9747,11 +9747,11 @@ let Et = class extends Z {
     this.iframeDoc && (this.iframeDoc.body.addEventListener("click", this.elementSelected, !0), this.iframeDoc.body.addEventListener("mouseover", this.highlightElement), this.iframeDoc.body.addEventListener("mouseout", this.removeHighlight));
   }
   makeInteractive() {
-    this.iframeDoc && (this.iframeDoc.body.removeEventListener("click", this.elementSelected, !0), this.iframeDoc.body.removeEventListener("mouseover", this.highlightElement), this.iframeDoc.body.removeEventListener("mouseout", this.removeHighlight));
+    this.iframeDoc && (this.removeSelectedClass(), this.iframeDoc.body.removeEventListener("click", this.elementSelected, !0), this.iframeDoc.body.removeEventListener("mouseover", this.highlightElement), this.iframeDoc.body.removeEventListener("mouseout", this.removeHighlight));
   }
   elementSelected(e) {
     if (this.iframeDoc) {
-      this.selectedElement && this.selectedElement.classList.remove("lib-overlay-selected"), e.preventDefault(), e.stopPropagation(), this.selectedElement = e?.target, this.selectedElement.classList.add("lib-overlay-selected");
+      this.removeSelectedClass(), e.preventDefault(), e.stopPropagation(), this.selectedElement = e?.target, this.selectedElement.classList.add("lib-overlay-selected");
       const n = z7(this.selectedElement, "", this.iframeDoc);
       this.updateSelector({
         selector: n,
@@ -9761,6 +9761,9 @@ let Et = class extends Z {
   }
   disableHyperLinks(e) {
     (e?.target).tagName.toLowerCase() === "a" && (e.preventDefault(), e.stopPropagation());
+  }
+  removeSelectedClass() {
+    this.selectedElement && this.selectedElement.classList.remove("lib-overlay-selected");
   }
   highlightElement(e) {
     (e?.target).classList.add("lib-overlay-highlight");
