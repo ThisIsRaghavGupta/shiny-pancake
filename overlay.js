@@ -9751,12 +9751,12 @@ let Et = class extends Z {
   }
   elementSelected(e) {
     if (this.iframeDoc) {
-      this.removeSelectedClass(), e.preventDefault(), e.stopPropagation(), this.selectedElement = e?.target, this.selectedElement.classList.add("lib-overlay-selected");
+      this.removeSelectedClass(), e.preventDefault(), e.stopPropagation(), this.removeHighlight(e), this.selectedElement = e?.target;
       const n = z7(this.selectedElement, "", this.iframeDoc);
       this.updateSelector({
         selector: n,
         element: this.selectedElement
-      });
+      }), this.selectedElement.classList.add("lib-overlay-selected");
     }
   }
   disableHyperLinks(e) {
