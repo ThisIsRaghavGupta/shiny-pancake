@@ -9783,7 +9783,11 @@ let $t = class extends S {
   }
   handlePreview() {
     const e = `${this.url}?ctPreviewBuilder`;
-    window.open(e, "_blank"), new BroadcastChannel("overlayChannel").postMessage("Hello from sender tab!"), this.$emit("preview");
+    window.open(e, "_blank");
+    const n = new BroadcastChannel("overlayChannel");
+    n.onmessage = function(r) {
+      console.log("Received message:", r.data), n.postMessage("Hello from sender tab!");
+    }, this.$emit("preview");
   }
   emitSave() {
     this.$emit("save");
