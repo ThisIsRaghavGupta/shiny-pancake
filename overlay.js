@@ -9786,8 +9786,8 @@ let $t = class extends S {
     window.open(e, "_blank");
     const n = new BroadcastChannel("overlayChannel");
     n.onmessage = function(r) {
-      console.log("Received message:", r.data), n.postMessage("Hello from sender tab!");
-    }, this.$emit("preview");
+      n.postMessage("Hello from sender tab!");
+    };
   }
   emitSave() {
     this.$emit("save");
